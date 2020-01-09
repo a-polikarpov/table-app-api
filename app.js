@@ -10,12 +10,14 @@ app.use(bodyParser.json());
 
 app.use('/', require('./src/routes'));
 
+const port = process.env.PORT || 3000;
+
 mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true  })
   .catch(console.log)
   .then(() => {
-    app.listen(3000, () => {
-      console.log('App is listening on port 3000');
+    app.listen(port, '0.0.0.0', () => {
+      console.log(`App is listening on port ${port}`);
     });
   });
