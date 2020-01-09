@@ -8,14 +8,13 @@ const app = express();
 
 app.use(bodyParser.json());
 
-// app.use("/", require("./routes"));
+app.use('/', require('./src/routes'));
 
 mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true  })
   .catch(console.log)
   .then(() => {
-    console.log(1);
     app.listen(3000, () => {
       console.log('App is listening on port 3000');
     });
